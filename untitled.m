@@ -9,7 +9,7 @@ tol = input("Ingrese el valor de la tolerancia: ");
 maxIter = input("Ingrese la cantidad maxima de iteraciones: ");
 error = X0;
 iteraciones = 0;
-X = X0;
+X = abs(X0);
 raiz = [X0];
 errores = [error];
 %procedemos con la iteracion
@@ -20,7 +20,7 @@ while error > tol & iteraciones < maxIter
     X0 = X;
     X = X - df\fx;
     raiz = [raiz, X];
-    error = X-X0; 
+    error = abs(X-X0); 
     iteraciones = iteraciones + 1;
     errores = [errores, error];
 end
