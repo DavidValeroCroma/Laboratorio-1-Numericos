@@ -24,3 +24,5 @@ while error > tol & iteraciones < maxIter
     iteraciones = iteraciones + 1;
     errores = [errores, error];
 end
+Y = log(errores);
+plot(Y, );
