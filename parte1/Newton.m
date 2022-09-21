@@ -12,8 +12,14 @@ iteraciones = 0;
 X = abs(X0);
 raiz = [X0];
 errores = [error];
+%inicializamos las variables de errror auxiliar con valores irrelevantes
+errorAux = 0;
+errorAuxAux = 0;
+errorAuxAuxAux = 0; 
 %procedemos con la iteracion
 while error > tol & iteraciones < maxIter
+    errorAuxAuxAux = errorAuxAux;
+    errorAuxAux = errorAux;
     errorAux = error;
     df = df1dx(X);
     fx = f1(X);
@@ -26,5 +32,18 @@ while error > tol & iteraciones < maxIter
     errores = [errores, error];
 
 end
+
 Y = log(errores);
-plot(errores, Y );
+plot( [Y(iteraciones - 2), Y(iteraciones - 1) ],[Y(iteraciones - 1), Y(iteraciones)]);
+
+%procedemos a calcular el valor de p y el valor de C
+
+p = (Y(iteraciones) - Y(iteraciones - 1))/(Y(iteraciones - 1) - Y(iteraciones - 2));
+
+C = exp(Y(iteraciones)-p*Y(iteraciones - 1));
+
+%Se crea la funcion logaritmica y se graficará en el intervalo [-2, 2]
+intervalo = (-1: 0.5: 1);
+funcLog = p.*intervalo + log(C);
+plot(intervalo, funcLog); 
+
