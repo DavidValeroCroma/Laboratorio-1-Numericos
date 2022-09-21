@@ -2,7 +2,7 @@
 f1 = @(x) x*log(x) - cos(x);
 %pedimos por entrada los valores de a, b y x0
 a = 1;
-b = 2;
+b = 4;
 tol = 0.00000001;
 iteraciones = 0;
 %se realizan las iteraciones
