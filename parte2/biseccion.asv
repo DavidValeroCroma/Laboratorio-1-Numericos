@@ -4,7 +4,7 @@ f1 = @(x) x*log(x) - cos(x);
 a = 1;
 b = 2;
 tol = 0.00000001;
-iteraciones = 0;
+iter = 0;
 %se realizan las iteraciones
 i = 0;
 x0 = 10000; %valor exagerado para la primera iteracion
@@ -29,7 +29,7 @@ while error > tol
     A = [A, a];
     B = [B, b];
     errores = [errores, error];
-    iteraciones = iteraciones + 1;
+    
 
 end
 

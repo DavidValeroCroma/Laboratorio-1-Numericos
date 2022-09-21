@@ -12,14 +12,9 @@ iteraciones = 0;
 X = abs(X0);
 raiz = [X0];
 errores = [error];
-%inicializamos las variables de errror auxiliar con valores irrelevantes
-errorAux = 0;
-errorAuxAux = 0;
-errorAuxAuxAux = 0; 
 %procedemos con la iteracion
 while error > tol & iteraciones < maxIter
-    errorAuxAuxAux = errorAuxAux;
-    errorAuxAux = errorAux;
+    
     errorAux = error;
     df = df1dx(X);
     fx = f1(X);
@@ -32,6 +27,8 @@ while error > tol & iteraciones < maxIter
     errores = [errores, error];
 
 end
+
+%calculamos el ln de los errores y procedemos a graficar
 
 Y = log(errores);
 plot( [Y(iteraciones - 2), Y(iteraciones - 1) ],[Y(iteraciones - 1), Y(iteraciones)]);
