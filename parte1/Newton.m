@@ -29,6 +29,7 @@ while error > tol & iteraciones < maxIter
 end
 
 %calculamos el ln de los errores y procedemos a graficar
+
 LOGS = log(errores);
 
 %eliminamos el primer elemento de los errores ya que es uno artificialmente
@@ -45,9 +46,9 @@ plot(X,Y);
 
 %procedemos a calcular el valor de p y el valor de C
 
-p = (Y(iteraciones) - Y(iteraciones - 1))/(Y(iteraciones - 1) - Y(iteraciones - 2));
+p = (LOGS(iteraciones) - LOGS(iteraciones - 1))/(LOGS(iteraciones - 1) - LOGS(iteraciones - 2));
 
-C = exp(Y(iteraciones)-p*Y(iteraciones - 1));
+C = exp(LOGS(iteraciones)-p*LOGS(iteraciones - 1));
 
 %Se crea la funcion logaritmica y se graficará en el intervalo [-2, 2] para
 %apreciar el cambio de la funcion

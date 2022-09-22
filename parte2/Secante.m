@@ -42,9 +42,9 @@ plot(X,Y);
 
 %procedemos a calcular el valor de p y el valor de C
 
-p = (Y(iteraciones) - Y(iteraciones - 1))/(Y(iteraciones - 1) - Y(iteraciones - 2));
+p = (LOGS(iteraciones) - LOGS(iteraciones - 1))/(LOGS(iteraciones - 1) - LOGS(iteraciones - 2));
 
-C = exp(Y(iteraciones)-p*Y(iteraciones - 1));
+C = exp(LOGS(iteraciones)-p*LOGS(iteraciones - 1));
 
 %Se crea la funcion logaritmica y se graficará en el intervalo [-2, 2]
 intervalo = (-1: 0.5: 1);
