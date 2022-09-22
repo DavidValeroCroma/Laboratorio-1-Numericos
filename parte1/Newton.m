@@ -29,9 +29,19 @@ while error > tol & iteraciones < maxIter
 end
 
 %calculamos el ln de los errores y procedemos a graficar
+LOGS = log(errores);
 
-Y = log(errores);
-plot( [Y(iteraciones - 2), Y(iteraciones - 1) ],[Y(iteraciones - 1), Y(iteraciones)]);
+%eliminamos el primer elemento de los errores ya que es uno artificialmente
+%añadido para efectos del loop
+Y = [];
+for i = 3:iteraciones 
+    Y = [Y , LOGS(i)];
+end
+X = [];
+for i = 2:iteraciones-1
+    X = [X , LOGS(i)];
+end
+plot(X,Y);
 
 %procedemos a calcular el valor de p y el valor de C
 
