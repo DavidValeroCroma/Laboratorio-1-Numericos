@@ -1,5 +1,10 @@
 %definimos la funcion 
 f1 = @(x) x*log(x) - cos(x);
+% descomentar para pruebas de la segunda ecuacion 
+% f1 =  @(x) exp(-x) -x^2 + 3x - 2;
+
+% ----------------metodo numerico-------------------
+
 %pedimos por entrada los valores de a, b y x0
 a = 1;
 b = 4;

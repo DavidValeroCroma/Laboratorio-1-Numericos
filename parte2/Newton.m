@@ -1,7 +1,14 @@
 %definimos la funcion 
 f1 = @(x) x*log(x) - cos(x);
+% descomentar para pruebas de la segunda ecuacion 
+% f1 =  @(x) exp(-x) -x^2 + 3x - 2;
+
 %declaramos las expresiones correspondientes a la derivada de la funcion
 df1dx = @(x) log(x) + 1 + sin(x);
+% descomentar para pruebas de la segunda ecuacion
+% df1dx = @(x) 3 - exp(-x) - 2x; 
+
+% ----------------metodo numerico-------------------
 %asignamos el valor del X incial y pedimos los valores que competen a la
 %tolerancia buscada
 X0 = 2; %aqui para el informe hay que probar con diferentes entradas iniciales

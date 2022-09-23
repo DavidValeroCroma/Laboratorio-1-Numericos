@@ -1,5 +1,10 @@
 %definimos la funcion 
 f1 = @(x) x*log(x) - cos(x);
+% descomentar para pruebas de la segunda ecuacion 
+% f1 =  @(x) exp(-x) -x^2 + 3x - 2;
+
+% ----------------metodo numerico-------------------
+
 %asignamos el valor del X incial y pedimos los valores que competen a la
 %tolerancia buscada
 x0 = input("Ingrese el primer valor: ");

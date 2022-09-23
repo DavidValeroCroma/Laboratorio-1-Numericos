@@ -1,7 +1,11 @@
 %definimos la funcion 
 f1 = @(x) x.^2 - 4 ; 
-%declaramos las expresiones correspondientes a la derivada de la funcion
+
+% declaramos las expresiones correspondientes a la derivada de la funcion
 df1dx = @(x) 2*x;
+
+% ----------------metodo numerico-------------------
+
 %asignamos el valor del X incial y pedimos los valores que competen a la
 %tolerancia buscada
 X0 = 4; %aqui para el informe hay que probar con diferentes entradas iniciales
@@ -55,4 +59,9 @@ C = exp(LOGS(iteraciones)-p*LOGS(iteraciones - 1));
 intervalo = (-1: 0.5: 1);
 funcLog = p.*intervalo + log(C);
 plot(intervalo, funcLog); 
+
+%---------------------  siguiente ecuacion no trivial -------------------
+
+
+
 
