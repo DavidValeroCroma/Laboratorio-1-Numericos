@@ -1,24 +1,24 @@
 %definimos la funcion 
 f1 = @(x) x*log(x) - cos(x);
 % descomentar para pruebas de la segunda ecuacion 
-% f1 =  @(x) exp(-x) -x^2 + 3x - 2;
+% f1 =  @(x) exp(-x) -x^2 + 3*x - 2;
 
 % ----------------metodo numerico-------------------
 
 %pedimos por entrada los valores de a, b y x0
 a = 1;
 b = 4;
-tol = 0.00000001;
+tol = 0.000000001;
 iteraciones = 0;
 %se realizan las iteraciones
-i = 0;
+i = 100000000;
 x0 = 10000; %valor exagerado para la primera iteracion
 error = x0;
 errores = [];
 raiz = [];
 A = [];
 B = [];
-while error > tol 
+while error > tol && iteraciones<i 
     m = (b + a)/2;
     if (f1(m) == 0)
         break
@@ -55,10 +55,19 @@ end
 plot(X,Y);
 
 %procedemos a calcular el valor de p y el valor de C
+pendientes = [];
+constantes = [];
+for i = 4:iteraciones 
 
-p = (LOGS(iteraciones) - LOGS(iteraciones - 1))/(LOGS(iteraciones - 1) - LOGS(iteraciones - 2));
+    p = (LOGS(iteraciones) - LOGS(iteraciones - 1))/(LOGS(iteraciones - 1) - LOGS(iteraciones - 2));
 
-C = exp(LOGS(iteraciones)-p*LOGS(iteraciones - 1));
+    C = exp(LOGS(iteraciones)-p*LOGS(iteraciones - 1));
+    pendientes = [pendientes,p];
+    constantes = [constantes, C];
+end
+%calculamos la media de las pendientes y de las constantes
+p = mean(pendientes);
+C = mean(constantes);
 
 %Se crea la funcion logaritmica y se graficará en el intervalo [-2, 2]
 intervalo = (-1: 0.5: 1);

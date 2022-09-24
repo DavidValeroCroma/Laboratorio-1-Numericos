@@ -17,7 +17,7 @@ X = abs(X0);
 raiz = [X0];
 errores = [error];
 %procedemos con la iteracion
-while error > tol & iteraciones < maxIter
+while error > tol && iteraciones < maxIter
     
     errorAux = error;
     df = df1dx(X);
@@ -49,10 +49,18 @@ end
 plot(X,Y);
 
 %procedemos a calcular el valor de p y el valor de C
+pendientes = [];
+constantes = [];
+for i = 4:iteraciones 
 
-p = (LOGS(iteraciones) - LOGS(iteraciones - 1))/(LOGS(iteraciones - 1) - LOGS(iteraciones - 2));
+    p = (LOGS(iteraciones) - LOGS(iteraciones - 1))/(LOGS(iteraciones - 1) - LOGS(iteraciones - 2));
 
-C = exp(LOGS(iteraciones)-p*LOGS(iteraciones - 1));
+    C = exp(LOGS(iteraciones)-p*LOGS(iteraciones - 1));
+    pendientes = [pendientes,p];
+    constantes = [constantes, C];
+end
+p = mean(pendientes);
+C = mean(constantes);
 
 %Se crea la funcion logaritmica y se graficará en el intervalo [-2, 2] para
 %apreciar el cambio de la funcion
@@ -60,7 +68,6 @@ intervalo = (-1: 0.5: 1);
 funcLog = p.*intervalo + log(C);
 plot(intervalo, funcLog); 
 
-%---------------------  siguiente ecuacion no trivial -------------------
 
 
 
