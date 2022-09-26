@@ -4,13 +4,14 @@ f1 = @(x) x.^2 - 4 ;
 % declaramos las expresiones correspondientes a la derivada de la funcion
 df1dx = @(x) 2*x;
 
+Cteo = 1 / df1dx(2); %valor teorico con la raiz real del problema
 % ----------------metodo numerico-------------------
 
 %asignamos el valor del X incial y pedimos los valores que competen a la
 %tolerancia buscada
 X0 = 4; %aqui para el informe hay que probar con diferentes entradas iniciales
-tol = input("Ingrese el valor de la tolerancia: ");
-maxIter = input("Ingrese la cantidad maxima de iteraciones: ");
+tol =input("ingrese el valor de la tolerancia: ");
+maxIter = input("ingrese la cantidad maxima de iteraciones ");
 error = X0;
 iteraciones = 0;
 X = abs(X0);
@@ -47,6 +48,10 @@ for i = 2:iteraciones-1
     X = [X , LOGS(i)];
 end
 plot(X,Y);
+title('Newton-Raphson 1 (pares ordenados)')
+    xlabel('ln(en)');
+    ylabel('ln(en+1)');
+    grid on;
 
 %procedemos a calcular el valor de p y el valor de C
 pendientes = [];
@@ -64,9 +69,14 @@ C = mean(constantes);
 
 %Se crea la funcion logaritmica y se graficará en el intervalo [-2, 2] para
 %apreciar el cambio de la funcion
-intervalo = (-1: 0.5: 1);
+intervalo = (-8: 0.5: 1);
 funcLog = p.*intervalo + log(C);
-plot(intervalo, funcLog); 
+
+plot(intervalo, funcLog);
+title('Newton-Raphson 1 (p.*intervalo + log(C))')
+    xlabel('ln(en)');
+    ylabel('ln(en+1)');
+    grid on;
 
 
 

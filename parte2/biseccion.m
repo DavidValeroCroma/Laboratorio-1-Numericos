@@ -6,12 +6,12 @@ f1 = @(x) x*log(x) - cos(x);
 % ----------------metodo numerico-------------------
 
 %pedimos por entrada los valores de a, b y x0
-a = 1;
-b = 4;
-tol = 0.000000001;
+a = input("ingrese el valor de a: ");
+b = input("ingrese el valor de b: ");
+tol = input("ingrese el valor de la tolerancia: ");
 iteraciones = 0;
 %se realizan las iteraciones
-i = 100000000;
+i = input("ingrese la cantidad maxima de iteraciones: ");
 x0 = 10000; %valor exagerado para la primera iteracion
 error = x0;
 errores = [];
@@ -53,7 +53,10 @@ for i = 2:iteraciones-1
     X = [X , LOGS(i)];
 end
 plot(X,Y);
-
+title('Bisección (pares ordenados)')
+    xlabel('ln(en)');
+    ylabel('ln(en+1)');
+    grid on;
 %procedemos a calcular el valor de p y el valor de C
 pendientes = [];
 constantes = [];
@@ -70,6 +73,10 @@ p = mean(pendientes);
 C = mean(constantes);
 
 %Se crea la funcion logaritmica y se graficará en el intervalo [-2, 2]
-intervalo = (-1: 0.5: 1);
+intervalo = (-23: 0.5: 2);
 funcLog = p.*intervalo + log(C);
 plot(intervalo, funcLog); 
+title('Bisección (p.*intervalo + log(C))')
+    xlabel('ln(en)');
+    ylabel('ln(en+1)');
+    grid on;
